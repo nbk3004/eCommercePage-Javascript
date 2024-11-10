@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Search functionality
+    // Search 
     searchInput.addEventListener("input", () => {
       const query = searchInput.value.toLowerCase();
       Array.from(productList.children).forEach((product) => {
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listener for "Clear Cart" button
     clearCartButton.addEventListener("click", clearCart);
 
-    // sort products by price
+    // sort by price
     function sortProducts(order) {
       const productsArray = Array.from(productList.children);
 
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return order === "asc" ? priceA - priceB : priceB - priceA;
       });
 
-      // Append sorted products 
+      // Append sorted 
       productList.innerHTML = "";
       productsArray.forEach((product) => productList.appendChild(product));
     }
