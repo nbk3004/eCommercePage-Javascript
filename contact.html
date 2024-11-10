@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<title>Contact</title>
+
+<body>
+    <header class="top-nav">
+        <h1><a href="index.html">R-Commerce</a></h1>
+    </header>
+    <section id="contact">
+        <h2>Send Us a Message</h2>
+        <form id="survey-form" action="https://formspree.io/f/meojwzop" method="POST">
+            <fieldset>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="number">Phone:</label>
+                <input type="tel" id="number" name="number" placeholder="Enter your phone number" required>
+
+                <label for="dropdown">How can we help you?</label>
+                <select id="dropdown" name="option" required>
+                    <option value="disabled selected">Select an option</option>
+                    <option value="call">Call me back!</option>
+                    <option value="order">Where is my order?</option>
+                    <option value="data">I want to change my personal data</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="comments">Please describe your request briefly:</label>
+                <textarea id="comments" name="comments" rows="4" cols="50"
+                    placeholder="Enter your thoughts here"></textarea>
+
+                <button type="submit" id="submit">Submit</button>
+            </fieldset>
+        </form>
+    </section>
+    <footer class="more">
+        <div class="footer-content">
+            <p class="more--rights">© 2023 R-Commerce. All rights reserved.</p>
+            <div class="more--credits">
+                <a href="./index.html">R-Commerce</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

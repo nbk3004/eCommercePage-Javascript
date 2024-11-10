@@ -23,6 +23,7 @@
           <input type="text" placeholder="Search..." class="navbar--search" />
         </li>
         <li id="cartLink"><a href="#shop">Cart</a></li>
+        <li class="contact"><a href="contact.html" target="_blank">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -41,8 +42,8 @@
       <div class="products--sorting">
         <label for="sort">Sort by price:</label>
         <select id="sort" class="sort--dropdown">
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
+          <option value="asc">Acending</option>
+          <option value="desc">Decending</option>
         </select>
       </div>
       <ul class="products--list">
@@ -252,6 +253,8 @@
     <div class="modal-cart-content">
       <span class="modal-cart-close">&times;</span>
       <h1>Cart</h1>
+      <button class="modal-cart-clear">Clear Cart</button>
+      <button class="modal-cart-close-btn">Close Cart</button>
       <p>...</p>
     </div>
   </div>
@@ -265,6 +268,8 @@
     </section>
   </footer>
   <script>
+
+
     document.addEventListener("DOMContentLoaded", () => {
       const modal = document.getElementById("modalCart");
       const cartLink = document.getElementById("cartLink");
@@ -274,43 +279,47 @@
       const cartDisplay = modal.querySelector("p");
       const cartItems = []; // Initialize an empty cart array
 
-      // Open cart modal function
+      const sortDropdown = document.getElementById("sort"); // Sorting dropdown
+      const clearCartButton = document.querySelector(".modal-cart-clear");
+      const closeCartButton = document.querySelector(".modal-cart-close-btn");
+
+
+
+      // Open cart 
       function openCartModal() {
         modal.style.display = "block";
         setTimeout(() => modal.classList.add("show"), 10);
         updateCartDisplay();
       }
 
-      // Close cart modal function
+      // Close cart 
       function closeCartModal() {
         modal.classList.remove("show");
         setTimeout(() => (modal.style.display = "none"), 300);
       }
 
-      // Cart modal event listeners
+      // click cart
       cartLink.onclick = openCartModal;
       closeBtn.onclick = closeCartModal;
+      closeCartButton.onclick = closeCartModal; // Close Cart button
       window.onclick = (event) => {
         if (event.target === modal) closeCartModal();
       };
 
-      // Function to update cart display and calculate total price
+      //  update cart 
       function updateCartDisplay() {
         if (cartItems.length === 0) {
           cartDisplay.textContent = "Your cart is empty.";
         } else {
-          // Create list of items
           const itemsList = cartItems
             .map((item) => `<li>${item.name} - ${item.price}</li>`)
             .join("");
 
-          // Calculate total price
           const totalPrice = cartItems.reduce((total, item) => {
             const price = parseFloat(item.price.replace("$", ""));
             return total + price;
           }, 0).toFixed(2);
 
-          // Display items and total price
           cartDisplay.innerHTML = `<ul>${itemsList}</ul><p><strong>Total: $${totalPrice}</strong></p>`;
         }
       }
@@ -347,9 +356,39 @@
           product.style.display = productName.includes(query) ? "" : "none";
         });
       });
-    });
-  </script>
 
+      // Function to clear cart
+      function clearCart() {
+        cartItems.length = 0; // Clear all items from cartItems array
+        updateCartDisplay(); // Update display to show empty cart
+      }
+
+      // Event listener for "Clear Cart" button
+      clearCartButton.addEventListener("click", clearCart);
+
+      // Function to sort products by price
+      function sortProducts(order) {
+        const productsArray = Array.from(productList.children);
+
+        productsArray.sort((a, b) => {
+          const priceA = parseFloat(a.querySelector(".product--price").textContent.replace("$", ""));
+          const priceB = parseFloat(b.querySelector(".product--price").textContent.replace("$", ""));
+
+          return order === "asc" ? priceA - priceB : priceB - priceA;
+        });
+
+        // Append sorted products back to the list
+        productList.innerHTML = "";
+        productsArray.forEach((product) => productList.appendChild(product));
+      }
+
+      // Event listener for sort dropdown
+      sortDropdown.addEventListener("change", (event) => {
+        sortProducts(event.target.value);
+      });
+    });
+
+  </script>
 </body>
 
 </html>
