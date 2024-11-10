@@ -243,6 +243,10 @@ body {
   border-radius: 160px;
 }
 
+.products--title {
+  padding-top: 15px;
+}
+
 .product--image {
   width: 140px;
   height: 300px;
@@ -393,6 +397,65 @@ body {
 .remove-item:active {
   background-color: #9b2d1f;
   transform: scale(0.95);
+}
+
+/*promo*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 100px;
+  margin-top: 5rem;
+  overflow: hidden;
+  mask-image: linear-gradient(to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1) 20%,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0));
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+.item {
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  left: max(calc(200px * 8), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.item1 {
+  animation-delay: calc(30s / 8 * (8 - 1) * -1);
+}
+
+.item2 {
+  animation-delay: calc(30s / 8 * (8 - 3) * -1);
+}
+
+.item3 {
+  animation-delay: calc(30s / 8 * (8 - 5) * -1);
+}
+
+.item4 {
+  animation-delay: calc(30s / 8 * (8 - 7) * -1);
 }
 
 /* FOOTER */
