@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.onclick = (event) => {
       if (event.target === modal) closeCartModal();
     };
+
     // Update cart display
     function updateCartDisplay() {
       if (cartItems.length === 0) {
