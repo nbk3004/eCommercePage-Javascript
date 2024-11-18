@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".navbar--search");
   const productList = document.querySelector(".products--list");
   const cartDisplay = modal.querySelector("p");
-  const cartItems = []; // Initialize an empty cart array
+  const cartItems = [];  
 
   const sortDropdown = document.getElementById("sort"); 
   const clearCartButton = document.querySelector(".modal-cart-clear");
@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error opening cart modal:", error);
     }
   }
+  // click cart
+  cartLink.onclick = openCartModal;
+  closeBtn.onclick = closeCartModal;
+  closeCartButton.onclick = closeCartModal; 
+  window.onclick = (event) => {
+    if (event.target === modal) closeCartModal();
+  };
 
   // Close cart 
   function closeCartModal() {
@@ -35,13 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // click cart
-  cartLink.onclick = openCartModal;
-  closeBtn.onclick = closeCartModal;
-  closeCartButton.onclick = closeCartModal; 
-  window.onclick = (event) => {
-    if (event.target === modal) closeCartModal();
-  };
+
 
   // Update cart display
   function updateCartDisplay() {
@@ -157,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         displayConfirmation(productName);
-        updateCartDisplay(); // Refresh 
+        updateCartDisplay(); 
       } catch (error) {
         console.error("Error adding product to cart:", error);
       }
