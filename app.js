@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Set blank
-  sortDropdown.value = "";
+  // Set not sorted (blank - not so pretty ??)
+  sortDropdown.value = "default";
 });
 
