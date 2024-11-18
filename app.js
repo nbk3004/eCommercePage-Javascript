@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Event listener for "Clear Cart" button
+  // Clear Cart button
   clearCartButton.addEventListener("click", clearCart);
 
   // sort by price
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Set not sorted (blank - not so pretty ??)
+  // Set not sorted 
   sortDropdown.value = "default";
 });
 

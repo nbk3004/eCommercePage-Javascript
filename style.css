@@ -201,7 +201,7 @@ body {
 }
 
 option[value="default"] {
-  background-color: rgb(243, 203, 151);
+  background-color: #feb47b;
   color: white
 }
 
