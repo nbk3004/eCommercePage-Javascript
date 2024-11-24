@@ -197,8 +197,13 @@ body {
   font-size: 16px;
   margin-left: 5px;
   cursor: pointer;
+
 }
 
+option[value="default"] {
+  background-color: #feb47b;
+  color: white
+}
 
 
 .products--title {
